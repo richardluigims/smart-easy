@@ -1,1 +1,181 @@
+@use '@angular/material' as mat;
+
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Thin.ttf');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraLight.ttf');
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraBold.ttf');
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Black.ttf');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  /* ITÁLICOS */
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ThinItalic.ttf');
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraLightItalic.ttf');
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-LightItalic.ttf');
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-Italic.ttf'); /* ou RegularItalic */
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-MediumItalic.ttf');
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-SemiBoldItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-BoldItalic.ttf');
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-ExtraBoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'Poppins';
+    src: url('assets/fonts/Poppins-BlackItalic.ttf');
+    font-weight: 900;
+    font-style: italic;
+  }
+  
+
+html, body {
+    height: 100%; background-color: var(--bg-strong);
+}
+body {
+    margin: 0;
+    // font-family: 'Poppins', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+@import 'variables/variables.scss';
+
+.custom-snackbar {
+  --mdc-snackbar-supporting-text-size: 16px;
+}
+
+.snackbar-success {
+  --mdc-snackbar-container-color: var(--success);
+}
+
+.snackbar-error {
+  --mdc-snackbar-container-color: var(--danger);
+}
+
+.button-round {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-clear {
+  background-color: transparent;
+  border: none;
+  transition: background-color 0.3s;
+}
+.button-clear:hover {
+  background-color: rgba(var(--primary-rgb), 0.15);
+}
+.button-clear:active {
+  background-color: rgba(var(--primary-rgb), 0.25);
+}

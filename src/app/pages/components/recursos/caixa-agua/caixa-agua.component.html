@@ -1,0 +1,19 @@
+<div class="container-flex">
+  <div class="water-container">
+    <div class="percentage">
+      @if (percentageSignal() != null) {
+      {{ percentageSignal() }}% }
+    </div>
+    <div #wave1 class="water-wave water-wave-1"></div>
+    <div #wave2 class="water-wave water-wave-2"></div>
+    <div #wave3 class="water-wave water-wave-3"></div>
+  </div>
+
+  <div class="values">
+    <div>
+      {{ valorMaximo + 'L' }}
+    </div>
+
+    <div>0L</div>
+  </div>
+</div>

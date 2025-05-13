@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="header">
+        <div class="app-name-and-menu-button">
+            <button type="button" class="menu-button button-clear button-round">
+                <ion-icon name="menu"></ion-icon>
+            </button>
+
+            <!-- <ion-icon src="/smart-easy-icon.svg"></ion-icon> -->
+            <div class="separator"></div>
+
+            <div class="app-name">
+                Smart Easy
+            </div>
+        </div>
+
+        <div class="user-credentials">
+            <div class="nome-empresa">
+                {{ nomeEmpresa }}
+            </div>
+
+            <div class="user-email">
+                {{ userEmail }}
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar-nav" (click)="toggleButtonsActiveState($event)">
+        <button type="button" class="nav-button active" (click)="goToHome()">
+            <ion-icon name="home"></ion-icon>
+            Home
+        </button>
+        
+        <div class="sidebar-content">
+            <div class="buttons-container">
+                <div class="title-buttons-container">
+                    Recursos
+                </div>
+
+                @for (recurso of recursoList; track recurso.codTipoRecurso) {
+                    <button type="button" class="nav-button" [id]="'button_' + recurso.codTipoRecurso" (click)="toogleRecursosView(recurso.codTipoRecurso, recurso.nomeRecurso)">
+                        @if (recurso.codTipoRecurso == tipoRecursoEnum.Lampada) {
+                            <ion-icon name="flash"></ion-icon>
+                        }
+                        @else if (recurso.codTipoRecurso == tipoRecursoEnum.CaixaAgua) {
+                            <ion-icon name="water"></ion-icon>
+                        }
+                        @else if (recurso.codTipoRecurso == tipoRecursoEnum.SaidaGas) {
+                            <ion-icon name="speedometer"></ion-icon>
+                        }
+            
+                        {{ recurso.nomeRecurso }}
+                    </button>
+                }
+            </div>
+
+            <div class="buttons-container">
+                <div class="title-buttons-container">
+                    Ambientes
+                </div>
+    
+                @for (ambiente of ambienteList; track ambiente.id) {
+                    <button type="button" class="nav-button" [id]="'button_' + ambiente.id" (click)="toggleAmbienteView(ambiente.id, ambiente.nomeAmbiente, ambiente.ionIconName)">
+                        <ion-icon [name]="ambiente.ionIconName"></ion-icon>
+            
+                        {{ ambiente.nomeAmbiente }}
+                    </button>
+                } 
+            </div>
+        </div>
+        
+        <button type="button" id="logout-button" class="nav-button" (click)="logout()">
+            <ion-icon name="log-out" style="transform: rotate(180deg);"></ion-icon>
+            Sair
+        </button>
+    </div>
+
+    <div class="content">
+        <router-outlet />
+    </div>
+</div>

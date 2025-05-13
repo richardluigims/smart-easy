@@ -1,0 +1,93 @@
+/* login.component.css */
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-strong);
+}
+
+.styling-container {
+    height: 100%;
+    width: 50%;
+    background-color: var(--primary);
+    border-bottom-right-radius: 24px;
+    border-top-right-radius: 24px;
+    position: relative;
+}
+
+.logo-smart-easy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+}
+
+.wifi-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+}
+
+.card-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-card-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+
+    mat-card-title {
+        font-weight: 500;
+        color: var(--primary);
+    }
+
+    .login-button {
+        width: 100%;
+        border-radius: 6px;
+        background-color: var(--primary);
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        padding-top: 14px;
+        height: auto;
+        padding-bottom: 14px;
+    }
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+::ng-deep .mat-mdc-form-field-hint-wrapper, 
+::ng-deep .mat-mdc-form-field-error-wrapper {
+    padding: 0px !important;
+}

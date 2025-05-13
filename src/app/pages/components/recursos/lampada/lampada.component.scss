@@ -1,0 +1,38 @@
+.lampada-container {
+    padding: 24px;
+    border-radius: 24px;
+    background-color: silver;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    width: 156px;
+    transition: background-color 0.3s;
+}
+
+svg {
+    width: 80%;
+    transition: filter 0.3s;
+    height: auto;
+}
+
+path {
+    stroke: white;
+    stroke-width: 12px;
+    fill: transparent;
+    transition: fill 0.3s, stroke 0.3s;
+}
+
+.lampada-container.active svg {
+    filter: drop-shadow(1px 1px 10px yellow);
+}
+
+.lampada-container.active path {
+    fill: yellow;
+    stroke: silver;
+}
+
+.lampada-container.active {
+    background-color: rgb(139, 139, 255);
+}

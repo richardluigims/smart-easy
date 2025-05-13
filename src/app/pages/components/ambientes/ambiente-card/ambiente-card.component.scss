@@ -1,0 +1,26 @@
+.ambiente-card {
+    // width: 50%;
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    background-color: white;
+    box-shadow: 0px 2px 10px rgba(var(--primary-rgb), 0.15);
+}
+
+.ambiente-title {
+    display: flex;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    align-items: center;
+}
+
+.recursos-list-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}

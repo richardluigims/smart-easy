@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="page-head">
+        @if (codTipoRecurso == tipoRecursoEnum.Lampada) {
+            <ion-icon name="flash"></ion-icon>
+        }
+        @else if (codTipoRecurso == tipoRecursoEnum.CaixaAgua) {
+            <ion-icon name="water"></ion-icon>
+        }
+        @if (codTipoRecurso == tipoRecursoEnum.SaidaGas) {
+            <ion-icon name="speedometer"></ion-icon>
+        }
+
+        {{ nomeRecurso }}
+    </div>
+
+    <div class="ambientes-container">
+        @for (recursosGroup of recursosGroups; track $index) {
+            <app-ambiente-card [recursosGroup]="recursosGroup"></app-ambiente-card>
+        }
+    </div>
+</div>

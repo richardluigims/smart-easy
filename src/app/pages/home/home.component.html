@@ -1,0 +1,53 @@
+<div class="page-container">
+    <div class="page-head">
+        <div class="page-title">
+            <ion-icon name="home"></ion-icon>
+            Home
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="welcome-message">
+            Bem vindo,
+
+            <div class="user-name">
+                {{ nomeUsuario }}
+            </div>
+        </div>
+    </div>
+
+    <div class="carousel-title">
+        Ambientes
+    </div>
+
+    <div class="simple-carousel">
+        @for (ambiente of ambienteList; track ambiente.id) {
+            <button type="button" (click)="toggleView(ambiente.id)" class="simple-square">
+                <ion-icon [name]="ambiente.ionIconName"></ion-icon>
+                {{ ambiente.nomeAmbiente }}
+            </button>
+        }
+    </div>
+
+    <div class="carousel-title">
+        Recursos
+    </div>
+
+    <div class="simple-carousel">
+        @for (recurso of recursoList; track recurso.codTipoRecurso) {
+            <button type="button" class="simple-square" (click)="toggleView(recurso.codTipoRecurso)">
+                @if (recurso.codTipoRecurso == tipoRecursoEnum.Lampada) {
+                    <ion-icon name="flash"></ion-icon>
+                }
+                @else if (recurso.codTipoRecurso == tipoRecursoEnum.CaixaAgua) {
+                    <ion-icon name="water"></ion-icon>
+                }
+                @if (recurso.codTipoRecurso == tipoRecursoEnum.SaidaGas) {
+                    <ion-icon name="speedometer"></ion-icon>
+                }
+
+                {{ recurso.nomeRecurso }}
+            </button>
+        }
+    </div>
+</div>

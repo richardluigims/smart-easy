@@ -1,0 +1,21 @@
+<div class="ambiente-card">
+    <div class="ambiente-title">
+        <ion-icon [name]="ionIconName"></ion-icon>
+
+        {{ nomeAmbiente }}
+    </div>
+
+    <div class="recursos-list-container">
+        @for(recurso of recursosGroup; track recurso.id) {
+            @if (recurso.codTipoRecurso == tipoRecursoEnum.Lampada) {
+                <app-lampada [docId]="recurso.id" [estadoAtual]="recurso.estadoAtual"></app-lampada>
+            }
+            @if (recurso.codTipoRecurso == tipoRecursoEnum.CaixaAgua) {
+                <app-caixa-agua [valorMaximo]="recurso.valorMaximo" [estadoAtual]="recurso.estadoAtual" [docId]="recurso.id"></app-caixa-agua>
+            }
+            @if (recurso.codTipoRecurso == tipoRecursoEnum.SaidaGas) {
+                <app-gas-gauge [valorNotificacao]="recurso.valorNotificacao" [valorMaximo]="recurso.valorMaximo" [estadoAtual]="recurso.estadoAtual" [docId]="recurso.id"></app-gas-gauge>
+            }
+        }
+    </div>
+</div>

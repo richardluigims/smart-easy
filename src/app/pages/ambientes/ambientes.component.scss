@@ -1,0 +1,19 @@
+// .container {
+//     // padding-top: 24px;
+//     // padding-left: 8px;
+// }
+
+.ambiente-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recursos-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}

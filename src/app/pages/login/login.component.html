@@ -1,0 +1,55 @@
+<div class="login-container">
+  <div class="styling-container">
+    <img class="wifi-image" src="img/login-image.png" alt="">
+
+    <img class="logo-smart-easy" src="img/logo-smart-easy.png" alt="">
+  </div>
+
+  <div class="card-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email" />
+
+            @if (loginForm.controls['email'].invalid &&
+            loginForm.controls['email'].touched) {
+            <mat-error style="padding-left: 0px;"> Insira um email válido. </mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="password" type="password" />
+
+            @if (loginForm.controls['password'].invalid &&
+            loginForm.controls['password'].touched) {
+            <mat-error> Informe a senha. </mat-error>
+            }
+          </mat-form-field>
+
+          <!-- @if (errorMessage) {
+          <div class="error-message">
+            {{ errorMessage }}
+          </div>
+          } -->
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="loading"
+            class="login-button"
+          >
+            {{ loading ? "Entrando..." : "Acessar" }}
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
