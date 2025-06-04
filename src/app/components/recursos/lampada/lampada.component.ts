@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MqttBrokerService } from '../../../../services/Mqtt/mqtt-broker.service';
+import { Component, INJECTOR, Input, OnInit } from '@angular/core';
+import { MqttBrokerService } from '../../../services/Mqtt/mqtt-broker.service';
 import { CommonModule } from '@angular/common';
-import { RecursosService } from '../../../../services/Firebase/recursos.service';
+import { RecursosService } from '../../../services/Firebase/recursos.service';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
@@ -17,6 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class LampadaComponent implements OnInit {
   @Input() docId: any;
   @Input() estadoAtual: any;
+  @Input() topicoMqtt: string = "";
 
   estadoInterno: any;
 
@@ -41,7 +42,7 @@ export class LampadaComponent implements OnInit {
       this.estadoInterno = "1";
     }
 
-    this.mqttBroker.PublishToTopic("teste/lampada", payload)
+    this.mqttBroker.PublishToTopic(this.topicoMqtt, payload)
       .then((response) => {
         this.recursosService.UpdateEstadoAtual(this.docId, this.estadoInterno)
           .then((response) => {

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, computed, ElementRef, inject, Input, OnChanges, OnDestroy, OnInit, signal, Signal, SimpleChanges, ViewChild } from '@angular/core';
-import { RecursosService } from '../../../../services/Firebase/recursos.service';
+import { RecursosService } from '../../../services/Firebase/recursos.service';
 
 @Component({
   selector: 'app-caixa-agua',

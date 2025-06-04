@@ -1,8 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnDestroy, OnInit } from '@angular/core';
 import { RecursosService } from '../../services/Firebase/recursos.service';
-import { LampadaComponent } from '../components/recursos/lampada/lampada.component';
-import { GasGaugeComponent } from '../components/recursos/gas-gauge/gas-gauge.component';
-import { CaixaAguaComponent } from '../components/recursos/caixa-agua/caixa-agua.component';
+import { LampadaComponent } from '../../components/recursos/lampada/lampada.component';
+import { GasGaugeComponent } from '../../components/recursos/gas-gauge/gas-gauge.component';
+import { CaixaAguaComponent } from '../../components/recursos/caixa-agua/caixa-agua.component';
 import { AmbientesService } from '../../services/Firebase/ambientes.service';
 import { TipoRecursoEnum } from '../../enums/TipoRecursoEnum';
 import { ActivatedRoute } from '@angular/router';

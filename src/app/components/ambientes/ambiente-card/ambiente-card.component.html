@@ -6,9 +6,9 @@
     </div>
 
     <div class="recursos-list-container">
-        @for(recurso of recursosGroup; track recurso.id) {
+        @for(recurso of recursosGroup(); track recurso.id) {
             @if (recurso.codTipoRecurso == tipoRecursoEnum.Lampada) {
-                <app-lampada [docId]="recurso.id" [estadoAtual]="recurso.estadoAtual"></app-lampada>
+                <app-lampada [docId]="recurso.id" [topicoMqtt]="recurso.topicoMqtt" [estadoAtual]="recurso.estadoAtual"></app-lampada>
             }
             @if (recurso.codTipoRecurso == tipoRecursoEnum.CaixaAgua) {
                 <app-caixa-agua [valorMaximo]="recurso.valorMaximo" [estadoAtual]="recurso.estadoAtual" [docId]="recurso.id"></app-caixa-agua>

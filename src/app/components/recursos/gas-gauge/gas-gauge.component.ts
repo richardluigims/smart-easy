@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
-import { RecursosService } from '../../../../services/Firebase/recursos.service';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { RecursosService } from '../../../services/Firebase/recursos.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

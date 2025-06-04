@@ -5,7 +5,7 @@ import { filter, first } from 'rxjs';
 import { RecursosService } from '../../services/Firebase/recursos.service';
 import { SubjectsService } from '../../services/Subjects/subjects.service';
 import { TipoRecursoEnum } from '../../enums/TipoRecursoEnum';
-import { AmbienteCardComponent } from '../components/ambientes/ambiente-card/ambiente-card.component';
+import { AmbienteCardComponent } from '../../components/ambientes/ambiente-card/ambiente-card.component';
 
 @Component({
   selector: 'app-recursos',
