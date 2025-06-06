@@ -17,3 +17,9 @@
     gap: 40px;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 430px) {
+    .ambiente-title {
+        display: none;
+    }
+}

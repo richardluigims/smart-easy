@@ -1,6 +1,10 @@
 <div class="box gauge">
     <div class="mask">
-        <div class="semi-circle" [ngClass]="(recurso?.estadoAtual ?? estadoAtual) < valorNotificacao ? 'okay' : 'danger'"></div>
+        <div class="semi-circle" [ngClass]="(recurso?.estadoAtual ?? estadoAtual) < valorNotificacao ? 'okay' : 'danger'">
+            <div class="estado-atual-container">
+                {{ recurso?.estadoAtual > valorMaximo ? valorMaximo : recurso?.estadoAtual }} ppm
+            </div>
+        </div>
         <div #gaugeMask class="semi-circle--mask"></div>
     </div>
 

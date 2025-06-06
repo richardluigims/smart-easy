@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from '../../services/Firebase/auth.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -10,19 +10,26 @@ import { TipoRecursoEnum } from '../../enums/TipoRecursoEnum';
 import { filter, first } from 'rxjs';
 import { SubjectsService } from '../../services/Subjects/subjects.service';
 import { IEmpresa } from '../../interfaces/empresa';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navigation-root',
   standalone: true,
   imports: [
     RouterOutlet,
-    MatSidenavModule
+    MatSidenavModule,
+    CommonModule
   ],
   templateUrl: './navigation-root.component.html',
   styleUrl: './navigation-root.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class NavigationRootComponent implements OnInit {
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.checkDevice();
+  }
+
   tipoRecursoEnum = TipoRecursoEnum;
 
   ambienteList: any = [];
@@ -31,15 +38,22 @@ export class NavigationRootComponent implements OnInit {
   nomeEmpresa: any;
   idEmpresa: any;
 
+  sidebarOpen = false;
+  isMobile = false;
+  isDesktop = false;
+
+  pageTitle = "Home";
+
   constructor(
     private authService: AuthService,
     private usuariosService: UsuariosService,
     private ambientesService: AmbientesService,
-    private recursosService: RecursosService,
     private router: Router,
     private empresasService: EmpresasService,
     private subjectsService: SubjectsService
-  ) { }
+  ) {
+    this.checkDevice();
+  }
 
   ngOnInit(): void {
     this.usuariosService.GetLoggedInUserData().pipe(
@@ -68,7 +82,8 @@ export class NavigationRootComponent implements OnInit {
               nomeUsuario: user.nomeUsuario,
               ambienteList: this.ambienteList,
               idEmpresa: user.idEmpresa,
-              recursoList: this.recursoList
+              recursoList: this.recursoList,
+              nomeEmpresa: this.nomeEmpresa
             };
 
             this.subjectsService.setHomeData(homeData);
@@ -77,26 +92,42 @@ export class NavigationRootComponent implements OnInit {
       })
   }
 
-  toggleAmbienteView(idAmbiente: any, nomeAmbiente: any, ionIconName: any) {
-    this.router.navigate(['/ambientes', idAmbiente]);
+  checkDevice() {
+    this.isMobile = window.innerWidth <= 768;
+    this.isDesktop = window.innerWidth > 1024;
+  }
 
-    let ambienteData = {
-      nomeAmbiente: nomeAmbiente,
-      ionIconName: ionIconName
+  toggleAmbienteView(idAmbiente: any, nomeAmbiente: any, ionIconName: any) {
+    if (this.isMobile) {
+      this.sidebarOpen = false;
+      this.pageTitle = nomeAmbiente;
+    }
+    else {
+      let ambienteData = {
+        nomeAmbiente: nomeAmbiente,
+        ionIconName: ionIconName
+      }
+
+      this.subjectsService.SetPageHead(ambienteData);
     }
 
-    // this.ambientesService.SetCurrentAmbienteData(ambienteData);
-    this.subjectsService.SetPageHead(ambienteData);
+    this.router.navigate(['/ambientes', idAmbiente]);
   }
 
   toogleRecursosView(codTipoRecurso: string, nomeRecurso: any) {
-    this.router.navigate(['/recursos', codTipoRecurso]);
+    if (this.isMobile) {
+      this.sidebarOpen = false;
+      this.pageTitle = nomeRecurso;
+    }
+    else {
+      let recursoData = {
+        nomeRecurso: nomeRecurso
+      }
 
-    let recursoData = {
-      nomeRecurso: nomeRecurso
+      this.subjectsService.SetPageHead(recursoData);
     }
 
-    this.subjectsService.SetPageHead(recursoData);
+    this.router.navigate(['/recursos', codTipoRecurso]);
   }
 
   toggleButtonsActiveState(event: any) {
@@ -111,6 +142,11 @@ export class NavigationRootComponent implements OnInit {
 
   goToHome() {
     this.router.navigate(['/home']);
+
+    if (this.isMobile) {
+      this.sidebarOpen = false;
+      this.pageTitle = "Home";
+    }
   }
 
   logout() {

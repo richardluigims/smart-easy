@@ -43,9 +43,15 @@ export class CaixaAguaComponent implements OnInit, OnDestroy, AfterViewInit {
     const max = this.recurso?.valorMaximo ?? this.valorMaximo;
 
     const rawPercentage = ((this.recurso?.estadoAtual ?? this.estadoAtual) / max) * 100;
-    const roundedPercentage = parseFloat(rawPercentage.toFixed(2));
 
-    this.percentageSignal.set(100 - roundedPercentage);
+    let roundedPercentage = parseFloat(rawPercentage.toFixed(2));
+
+    if (roundedPercentage > 100) {
+      roundedPercentage = 100;
+    }
+
+    const percentageValue = parseFloat((100 - roundedPercentage).toFixed(2));
+    this.percentageSignal.set(percentageValue);
 
     this.wave1.nativeElement.style.top = (roundedPercentage + 10) + "%";
     this.wave2.nativeElement.style.top = (roundedPercentage + 5) + "%";

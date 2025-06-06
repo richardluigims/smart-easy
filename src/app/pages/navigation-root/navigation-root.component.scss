@@ -34,6 +34,12 @@
     padding-right: 16px;
     position: fixed;
     top: 0;
+
+    .page-title {
+        font-size: 24px;
+        color: var(--text-strong);
+        font-weight: 600;
+    }
 }
 
 .user-credentials {
@@ -42,13 +48,13 @@
     flex-direction: column;
     height: 100%;
     justify-content: center;
+    color: var(--text-semi-strong);
 
     .nome-empresa {
         font-weight: 600;
     }
 
     .user-email {
-        color: var(--text-semi-strong);
         font-weight: 500;
     }
 }
@@ -60,42 +66,86 @@
     align-items: center;
     gap: 8px;
 
-    .menu-button {
-        font-size: 24px;
-        width: 40px;
-        height: 40px;
-        color: var(--primary);
-    }
-
-    .separator {
-        height: 24px;
-        width: 1px;
-        background-color: var(--primary);
-        margin-right: 8px;
-    }
+    // .separator {
+    //     height: 24px;
+    //     width: 1px;
+    //     background-color: var(--primary);
+    //     margin-right: 8px;
+    // }
 }
 
-.separator {
-    height: 50%;
-    width: 1px;
-    background-color: black;
+.menu-button {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    color: var(--primary);
 }
+
+// .separator {
+//     height: 50%;
+//     width: 1px;
+//     background-color: black;
+// }
 
 .sidebar-nav {
     background-color: var(--primary);
     width: var(--sidebar-width);
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     flex-direction: column;
     /* padding: 16px; */
     padding-left: 0px;
-    height: calc(100vh - var(--header-height));
+    height: calc(100svh - var(--header-height));
     position: fixed;
     left: 0;
     gap: 24px;
     padding-top: 18px;
     padding-right: 16px;
+    transition: left 0.2s;
+
+    .app-name {
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .user-credentials {
+        color: white;
+        align-items: start;
+    }
+
+    .sidebar-nav-header {
+        display: flex;
+        padding-left: 8px;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        position: relative;
+        width: 100%;
+
+        .logout-button {
+            position: absolute;
+            top: 50%;
+            transform: translate(0px, -50%);
+            right: 0;
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 300;
+            font-size: 12px;
+            gap: 4px;
+
+            ion-icon {
+                color: white;
+                font-size: 14px;
+            }
+        }
+    }
+
+    .menu-button {
+        color: white;
+    }
 
     .sidebar-content {
         width: 100%;
@@ -176,4 +226,79 @@
     // height: 40px;
     // background-color: var(--primary);
     color: black;
+}
+
+.sidebar-nav-backdrop {
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100svh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.25s;
+
+    &.show {
+        opacity: 1;
+        z-index: 101;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .sidebar-nav {
+        top: 0;
+        z-index: 102;
+        left: calc(var(--sidebar-width) * -1);
+        height: 100svh;
+
+        &.open {
+            left: 0;
+        }
+    }
+
+    .content {
+        margin-left: 0px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .header {
+        border-bottom-left-radius: 0px;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    :host {
+        --header-height: 72px;
+    }
+
+    .container {
+        padding-top: calc(var(--header-height) - 1px);
+    }
+
+    .header {
+        box-shadow: none;
+        padding-left: 14px;
+
+        .menu-button {
+            color: var(--text-strong);
+            width: 40px;
+            height: 40px;
+
+            ion-icon {
+                font-size: 32px;
+            }
+        }
+
+    }
+
+    .content {
+        padding-top: 8px;
+        padding-left: 22px;
+    }
+
+    .sidebar-nav {
+        --sidebar-width: 80%;
+    }
 }

@@ -17,3 +17,36 @@
     // max-width: 50%;
     // min-width: 30%;
 }
+
+@media screen and (max-width: 430px) {
+    .page-head {
+        display: none;
+    }
+}
+
+// .page-head {
+//     font-size: 24px;
+//     font-weight: bold;
+//     margin-bottom: 48px;
+//     display: flex;
+//     align-items: center;
+//     gap: 10px;
+// }
+
+// .ambientes-container {
+//     display: flex;
+//     width: 100%;
+//     gap: 32px;
+//     justify-content: center;
+// }
+
+// .ambientes-container * {
+//     // max-width: 50%;
+//     // min-width: 30%;
+// }
+
+// @media screen and (max-width: 430px) {
+//     .page-head {
+//         display: none;
+//     }
+// }

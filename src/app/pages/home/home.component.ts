@@ -19,12 +19,10 @@ export class HomeComponent implements OnInit {
   ambienteList: any;
   recursoList: any;
   nomeUsuario: any;
+  nomeEmpresa: string = "";
 
   constructor(
-    private subjectsService: SubjectsService,
-    private router: Router,
-    private recursosService: RecursosService,
-    private ambientesService: AmbientesService
+    private subjectsService: SubjectsService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +35,7 @@ export class HomeComponent implements OnInit {
           this.nomeUsuario = homeData.nomeUsuario.split(" ")[0];
           this.recursoList = homeData.recursoList;
           this.ambienteList = homeData.ambienteList;
+          this.nomeEmpresa = homeData.nomeEmpresa;
         }
       })
   }

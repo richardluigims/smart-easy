@@ -84,3 +84,15 @@
 .simple-carousel::-webkit-scrollbar {
     width: 0;
 }
+
+@media screen and (max-width: 430px) {
+    .page-head {
+        .page-title {
+            display: none;
+        }
+
+        .separator {
+            display: none;
+        }
+    }
+}

@@ -26,7 +26,7 @@ export class SnackBarService {
         break;
     }
 
-    this.snackBar.open(message, '', {
+    this.snackBar.open(message, 'OK', {
       duration: 3000,
       verticalPosition: 'top',
       panelClass: className

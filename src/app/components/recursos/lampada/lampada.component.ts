@@ -20,26 +20,34 @@ export class LampadaComponent implements OnInit {
   @Input() topicoMqtt: string = "";
 
   estadoInterno: any;
+  watchRecurso: any;
 
   constructor(
     private mqttBroker: MqttBrokerService,
     private recursosService: RecursosService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.estadoInterno = this.estadoAtual;
+
+    this.watchRecurso = this.recursosService.WatchRecursoChanges(this.docId).subscribe((recurso: any) => {
+      console.log("alteração");
+      if (recurso) {
+        this.estadoInterno = recurso.estadoAtual;
+      }
+    })
   }
-  
+
   toggleLampState() {
     let payload = "";
 
-    if (this.estadoInterno == "1") {
+    if (this.estadoInterno === 1) {
       payload = "OFF";
-      this.estadoInterno = "0";
+      this.estadoInterno = 0;
     }
     else {
       payload = "ON";
-      this.estadoInterno = "1";
+      this.estadoInterno = 1;
     }
 
     this.mqttBroker.PublishToTopic(this.topicoMqtt, payload)
@@ -52,6 +60,10 @@ export class LampadaComponent implements OnInit {
       .catch((error) => {
         console.log(error);
       })
+  }
+
+  ngOnDestroy(): void {
+    this.watchRecurso.unsubscribe();
   }
 }
 ""

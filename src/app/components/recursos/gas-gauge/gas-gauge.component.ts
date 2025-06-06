@@ -21,7 +21,7 @@ export class GasGaugeComponent implements OnInit, AfterViewInit, OnDestroy {
   valorGrausGauge = 180;
   className = 'okay';
 
-  valorMin = 300;
+  valorMin = 0;
 
   @ViewChild('gaugeMask') gaugeMask!: ElementRef<HTMLElement>;
 
@@ -53,6 +53,7 @@ export class GasGaugeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (roundedPercentage != null) {
       let deg = ((roundedPercentage * this.valorGrausGauge) / 100).toFixed(2);
+      deg = parseFloat(deg) > 180 ? "180" : deg;
 
       this.gaugeMask.nativeElement.style.transform = 'rotate(' + deg + 'deg)';
     }

@@ -7,11 +7,17 @@
 
         <div class="separator"></div>
 
+        <!-- <div class="nome-empresa">
+            {{ nomeEmpresa }}
+        </div> -->
+
         <div class="welcome-message">
             Bem vindo,
 
             <div class="user-name">
-                {{ nomeUsuario }}
+                @if (nomeUsuario) {
+                    {{ nomeUsuario + "!" }}
+                }
             </div>
         </div>
     </div>
